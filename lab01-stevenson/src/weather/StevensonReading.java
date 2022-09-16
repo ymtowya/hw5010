@@ -103,10 +103,12 @@ public final class StevensonReading implements WeatherReading {
 	
 	/**
 	 * This function calculates the Heat index
-	 * All parameters are treated as inside constants
+	 * All coefficients are treated as inside constants
+	 * 
 	 * @return Heat index
 	 */
 	private double calcHeatIndex() {
+		// constant coefficients
 		final double c1 = -8.78469475556;
 		final double c2 = 1.61139411;
 		final double c3 = 2.33854883889;
@@ -116,10 +118,11 @@ public final class StevensonReading implements WeatherReading {
 		final double c7 = 0.002211732;
 		final double c8 = 0.00072546;
 		final double c9 = -0.000003582;
-		
+		// air temperature
 		final double airT = this.airTemperatureDouble.doubleValue();
+		// relative humidity
 		final double rh = this.calcRH();
-		
+		// based on given formulas
 		double result = 0.0;
 		result += c1 + c2 * airT + c3 * rh + c4 * airT * rh;
 		result += c5 * airT * airT + c6 * rh * rh;
@@ -143,8 +146,11 @@ public final class StevensonReading implements WeatherReading {
 	}
 	
 	private double calcWindChill() {
+		// temperature in Fehr form
 		final double tF = this.getFahrFromCels(this.airTemperatureDouble);
+		// wind speed
 		final double wS = this.windSpeedDouble.doubleValue();
+		// constant coefficients
 		final double p1 = 35.74;
 		final double p2 = 0.6215;
 		final double p3 = 35.75;
@@ -159,7 +165,6 @@ public final class StevensonReading implements WeatherReading {
 
 	@Override
 	public int getWindChill() {
-		// TODO Auto-generated method stub
 		return this.getRoundIntFromDouble(this.getCelsFromFahr(this.calcWindChill()));
 	}
 	
@@ -193,10 +198,10 @@ public final class StevensonReading implements WeatherReading {
 		// Type convert
 		WeatherReading thatReading = (WeatherReading) o;
 		
-		boolean result = thatReading.getTemperature() == this.getTemperature() &&
-							thatReading.getDewPoint() == this.getDewPoint() &&
-							thatReading.getWindSpeed() == this.getWindSpeed() &&
-							thatReading.getTotalRain() == this.getTotalRain();
+		boolean result = thatReading.getTemperature() == this.getTemperature()
+											&& thatReading.getDewPoint() == this.getDewPoint()
+											&& thatReading.getWindSpeed() == this.getWindSpeed()
+											&& thatReading.getTotalRain() == this.getTotalRain();
 		
 		
 		return result;
