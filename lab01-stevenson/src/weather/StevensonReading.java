@@ -9,7 +9,7 @@ public final class StevensonReading implements WeatherReading {
 
   /**
    * 
-   * Fields of major collected and calculated values
+   * Fields of major collected and calculated values.
    */
   private final Double airTemperatureDouble;
   private final Double dewTemperatureDouble;
@@ -28,10 +28,8 @@ public final class StevensonReading implements WeatherReading {
    */
   public StevensonReading(double airTemperature, double dewTemperature, double windSpeed,
       int totalRain) {
-
-    /**
-     * The dew point cannot be greater than the air temperature
-     */
+    
+    // The dew point cannot be greater than the air temperature
     if (dewTemperature > airTemperature) {
       throw new IllegalArgumentException("dewTemperature cannot be higher than airTemperature");
     }
@@ -51,8 +49,7 @@ public final class StevensonReading implements WeatherReading {
   }
 
   /**
-   * This private function converts a double value into its rounded nearest
-   * integer value
+   * This private function converts a double value into its rounded nearest integer value.
    * 
    * @param input value in double type
    * @return the nearest integer of the input
@@ -82,7 +79,7 @@ public final class StevensonReading implements WeatherReading {
   }
 
   /**
-   * This function calculated the vapor pressure based on the input temperature
+   * This function calculated the vapor pressure based on the input temperature.
    * 
    * @param temperature double type value of the temperature
    * @return the vapor pressure
@@ -92,23 +89,22 @@ public final class StevensonReading implements WeatherReading {
   }
 
   /**
-   * This function calculates the relative humidity (of 100 percentage)
+   * This function calculates the relative humidity (of 100 percentage).
    * 
    * @return the relative humidity (in xx% form)
    */
-  private double calcRH() {
+  private double calcReH() {
     return 100 * this.calcVaporPressure(this.dewTemperatureDouble)
         / this.calcVaporPressure(this.airTemperatureDouble);
   }
 
   @Override
   public int getRelativeHumidity() {
-    return this.getRoundIntFromDouble(this.calcRH());
+    return this.getRoundIntFromDouble(this.calcReH());
   }
 
   /**
-   * This function calculates the Heat index All coefficients are treated as
-   * inside constants
+   * This function calculates the Heat index All coefficients are treated as inside constants.
    * 
    * @return Heat index
    */
@@ -123,11 +119,11 @@ public final class StevensonReading implements WeatherReading {
     final double c7 = 0.002211732;
     final double c8 = 0.00072546;
     final double c9 = -0.000003582;
-// air temperature
+    // air temperature
     final double airT = this.airTemperatureDouble.doubleValue();
-// relative humidity
-    final double rh = this.calcRH();
-// based on given formulas
+    // relative humidity
+    final double rh = this.calcReH();
+    // based on given formulas
     double result = 0.0;
     result += c1 + c2 * airT + c3 * rh + c4 * airT * rh;
     result += c5 * airT * airT + c6 * rh * rh;
@@ -192,12 +188,12 @@ public final class StevensonReading implements WeatherReading {
       return true;
     }
 
-// Type mismatch
+    // Type mismatch
     if (!(o instanceof WeatherReading)) {
       return false;
     }
 
-// Type convert
+    // Type convert
     WeatherReading thatReading = (WeatherReading) o;
 
     boolean result = thatReading.getTemperature() == this.getTemperature()
