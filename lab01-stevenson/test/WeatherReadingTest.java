@@ -1,4 +1,6 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
@@ -105,7 +107,8 @@ public class WeatherReadingTest {
    */
   @Test
   public final void testGetRelativeHumidity() {
-    assertEquals(1, 1);
+    StevensonReading stevensonReading2 = new StevensonReading(62.125116, 61.101918, 9.630701, 32);
+    assertEquals(stevensonReading2.getRelativeHumidity(), 99);
   }
 
   /**
@@ -113,7 +116,8 @@ public class WeatherReadingTest {
    */
   @Test
   public final void testGetHeatIndex() {
-    assertEquals(1, 1);
+    StevensonReading stevensonReading3 = new StevensonReading(40.157599, 23.301219, 21.642746, 58);
+    assertEquals(stevensonReading3.getHeatIndex(), 65);
   }
 
   /**
@@ -121,7 +125,44 @@ public class WeatherReadingTest {
    */
   @Test
   public final void testGetWindChill() {
-    assertEquals(1, 1);
+    StevensonReading stevensonReading4 = new StevensonReading(73.248794, 72.403984, 9.097296, 31);
+    assertEquals(stevensonReading4.getWindChill(), 86);
+  }
+  
+  /**
+   * Test method for {@link weather.StevensonReading#hashCode()}.
+   */
+  @Test
+  public final void testHashCode() {
+    StevensonReading stevensonReading5 = new StevensonReading(p1, p2, p3, p4);
+    assertEquals(this.myStevensonReading.hashCode(), stevensonReading5.hashCode());
+  }
+  
+  /**
+   * Test method for {@link weather.StevensonReading#equals()}.
+   */
+  @Test
+  public final void testEquals() {
+    StevensonReading stevensonReading5 = new StevensonReading(p1, p2, p3, p4);
+    StevensonReading stevensonReading6 = new StevensonReading(p1 + 1.0, p2, p3, p4);
+    StevensonReading stevensonReading7 = new StevensonReading(p1, p2 + 1.0, p3, p4);
+    StevensonReading stevensonReading8 = new StevensonReading(p1, p2, p3 + 1.0, p4);
+    StevensonReading stevensonReading9 = new StevensonReading(p1, p2, p3, p4 + 1);
+    assertTrue(this.myStevensonReading.equals(this.myStevensonReading));
+    assertTrue(this.myStevensonReading.equals(stevensonReading5));
+    assertFalse(this.myStevensonReading.equals(stevensonReading6));
+    assertFalse(this.myStevensonReading.equals(stevensonReading7));
+    assertFalse(this.myStevensonReading.equals(stevensonReading8));
+    assertFalse(this.myStevensonReading.equals(stevensonReading9));
+    assertFalse(this.myStevensonReading.equals(null));
+  }
+  
+  /**
+   * Test method for {@link weather.StevensonReading#toString()}.
+   */
+  @Test
+  public final void testToString() {
+    assertEquals(this.myStevensonReading.toString(), "Reading: T = 40, D = 23, v = 22, rain = 58");
   }
 
 }
