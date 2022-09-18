@@ -1,33 +1,30 @@
-/**
- * 
- */
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import weather.StevensonReading;
 
 /**
- * @author mtowya
+ * 
+ * Test the StevensonReading class.
  *
  */
 public class StevensonReadingTest {
-	
-    private StevensonReading myStevensonReading;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		this.myStevensonReading = new StevensonReading(40.157599, 23.301219, 21.642746, 58);
-	}
+  private StevensonReading myStevensonReading;
 
-	@Test
-	public void test() {
-		assertEquals(this.myStevensonReading.getDewPoint(), 23);
-	}
+  /**
+   * Set up the field.
+   * @throws IllegalArgumentException for invalid inputs
+   */
+  @Before
+  public void setUp() throws IllegalArgumentException {
+    this.myStevensonReading = new StevensonReading(40.157599, 23.301219, 21.642746, 58);
+  }
+
+  @Test
+  public void test() {
+    assertEquals(this.myStevensonReading.getDewPoint(), 23);
+  }
 
 }
