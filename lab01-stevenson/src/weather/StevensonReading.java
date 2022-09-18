@@ -197,7 +197,7 @@ public final class StevensonReading implements WeatherReading {
     // Type convert
     WeatherReading thatReading = (WeatherReading) o;
     
- // hashCode Comparison
+    // hashCode Comparison
     if (this.hashCode() != thatReading.hashCode()) {
       return false;
     }
