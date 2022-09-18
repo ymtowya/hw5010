@@ -105,7 +105,7 @@ public final class StevensonReading implements WeatherReading {
   }
 
   /**
-   * This function calculates the Heat index All coefficients are treated as inside constants.
+   * This function calculates the Heat index with all coefficients treated as inside constants.
    * 
    * @return Heat index
    */
