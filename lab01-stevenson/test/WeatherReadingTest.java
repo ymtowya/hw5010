@@ -1,6 +1,6 @@
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
@@ -143,11 +143,11 @@ public class WeatherReadingTest {
    */
   @Test
   public final void testEquals() {
-    StevensonReading stevensonReading5 = new StevensonReading(p1, p2, p3, p4);
-    StevensonReading stevensonReading6 = new StevensonReading(p1 + 1.0, p2, p3, p4);
-    StevensonReading stevensonReading7 = new StevensonReading(p1, p2 + 1.0, p3, p4);
-    StevensonReading stevensonReading8 = new StevensonReading(p1, p2, p3 + 1.0, p4);
-    StevensonReading stevensonReading9 = new StevensonReading(p1, p2, p3, p4 + 1);
+    final StevensonReading stevensonReading5 = new StevensonReading(p1, p2, p3, p4);
+    final StevensonReading stevensonReading6 = new StevensonReading(p1 + 1.0, p2, p3, p4);
+    final StevensonReading stevensonReading7 = new StevensonReading(p1, p2 + 1.0, p3, p4);
+    final StevensonReading stevensonReading8 = new StevensonReading(p1, p2, p3 + 1.0, p4);
+    final StevensonReading stevensonReading9 = new StevensonReading(p1, p2, p3, p4 + 1);
     assertTrue(this.myStevensonReading.equals(this.myStevensonReading));
     assertTrue(this.myStevensonReading.equals(stevensonReading5));
     assertFalse(this.myStevensonReading.equals(stevensonReading6));

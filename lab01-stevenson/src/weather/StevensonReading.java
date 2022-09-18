@@ -3,7 +3,8 @@ package weather;
 /**
  * 
  * This class implements the interface {@code WeatherReading} and is based on
- * Stevenson Screen's data collection.
+ * Stevenson Screen's data collection, represented as Air Temperature, Dew Points, 
+ * Wind Speed, and Total Rain.
  */
 public final class StevensonReading implements WeatherReading {
 
@@ -195,6 +196,11 @@ public final class StevensonReading implements WeatherReading {
 
     // Type convert
     WeatherReading thatReading = (WeatherReading) o;
+    
+ // hashCode Comparison
+    if (this.hashCode() != thatReading.hashCode()) {
+      return false;
+    }
 
     boolean result = thatReading.getTemperature() == this.getTemperature()
         && thatReading.getDewPoint() == this.getDewPoint()
