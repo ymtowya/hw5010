@@ -1,23 +1,26 @@
-
 package transmission;
 
 /**
- * Implement Transmission, initiated with 6 inputs.
+ * Class AutomaticTransmission represents an auto 
+ * which can change its speed and automatically change its gear.
+ * It implements the class Transmission, and initiated with 5 inputs of thresholds.
+ * The gear variable changes according to the thresholds, while the speed in\decreases. 
  *
  */
 public final class AutomaticTransmission implements Transmission {
   
-  int speed;
-  int gear;
-  int threshold1;
-  int threshold2;
-  int threshold3;
-  int threshold4;
-  int threshold5;
+  // fields
+  private int speed;
+  private int gear;
+  private final int threshold1;
+  private final int threshold2;
+  private final int threshold3;
+  private final int threshold4;
+  private final int threshold5;
   
   /**
    * 
-   * Constructor of the AutoTransmission, takes into 5 thresholds for the gear to change.
+   * Constructor of the AutoTransmission, takes into 5 thresholds as the gear changing gate.
    * 
    * @param inThreshold1 speed that causes the transmission to change from gear 1 to gear 2
    * @param inThreshold2 speed that causes the transmission to change from gear 2 to gear 3
@@ -47,6 +50,10 @@ public final class AutomaticTransmission implements Transmission {
     this.gear = 0;
   }
   
+  /**
+   * Update the gear variable based on the speed.
+   * 
+   */
   private void updateGear() {
     this.gear = 1;
     if (this.speed == 0) {
@@ -69,12 +76,21 @@ public final class AutomaticTransmission implements Transmission {
     }
   }
   
+  /**
+   * Increase the Speed by 1, and update the gear respectively.
+   * 
+   */
   @Override
   public void increaseSpeed() {
     this.speed += 1;
     this.updateGear();
   }
 
+  /**
+   * Decrease the Speed by 1, and update the gear respectively.
+   * 
+   * @throws IllegalStateException when the speed is negative after changing
+   */
   @Override
   public void decreaseSpeed() throws IllegalStateException {
     this.speed -= 1;
@@ -99,6 +115,37 @@ public final class AutomaticTransmission implements Transmission {
     final String resultString = String.format("Transmission (speed = %d, gear = %d)",
         this.getSpeed(), this.getGear());
     return resultString;
+  }
+  
+  @Override
+  public int hashCode() {
+    return 41 + this.toString().hashCode() * 7;
+  }
+  
+  @Override
+  public boolean equals(Object o) {
+    if (o == null) {
+      return false;
+    }
+    
+    // Type mismatch
+    if (!(o instanceof AutomaticTransmission)) {
+      return false;
+    }
+    
+    AutomaticTransmission that = (AutomaticTransmission) o;
+    
+    if (this.getGear() == that.getGear()
+        && this.getSpeed() == that.getSpeed()
+        && this.threshold1 == that.threshold1
+        && this.threshold2 == that.threshold2
+        && this.threshold3 == that.threshold3
+        && this.threshold4 == that.threshold4
+        && this.threshold5 == that.threshold5) {
+      return true;
+    }
+    
+    return false;
   }
 
 }
