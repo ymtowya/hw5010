@@ -183,9 +183,44 @@ public class TicTacToeControllerTest {
         + "-----------\n"
         + " O | X | X", model.toString());
   }
+  
+  /**
+   * Test game state where X wins.
+   *
+   */
+  @Test
+  public void testXpWins() {
+    StringReader input = new StringReader("2 2 1 1 3 2 1 3 1 2 3 1");
+    TicTacToeController c = new TicTacToeConsoleController(input, stringWriter);
+    c.playGame(model);
+    assertTrue(stringWriter.toString().contains("X wins"));
+    assertEquals(" O | X | O\n"
+        + "-----------\n"
+        + "   | X |  \n"
+        + "-----------\n"
+        + "   | X |  ", model.toString());
+  }
+  
+  /**
+   * Test game state where X wins.
+   *
+   */
+  @Test
+  public void testOpWins() {
+    StringReader input = new StringReader("3 3 2 2 1 1 3 2 1 3 1 2 3 1");
+    TicTacToeController c = new TicTacToeConsoleController(input, stringWriter);
+    c.playGame(model);
+    assertTrue(stringWriter.toString().contains("O wins"));
+    assertEquals(" X | O | X\n"
+        + "-----------\n"
+        + "   | O |  \n"
+        + "-----------\n"
+        + "   | O | X", model.toString());
+  }
 
   /**
-   * Test invalid input.
+   * Test invalid input. 
+   * Credited from Piazza Sample Test.
    *
    */
   @Test
@@ -205,20 +240,6 @@ public class TicTacToeControllerTest {
         + "Game quit! Ending game state:\n" + " X | O | X\n" + "-----------\n" + "   | O |  \n"
         + "-----------\n" + "   |   | X\n";
     assertEquals(expectString, stringWriter.toString());
-  }
-
-  @Test
-  public void testInvalidInput2() {
-    StringReader input = new StringReader("2 2 1 1 3 3 0 1 2 1 3 2 3 1 1 3 1 3 2");
-    TicTacToeController c = new TicTacToeConsoleController(input, stringWriter);
-    c.playGame(model);
-  }
-
-  @Test
-  public void testInvalidState1() {
-    StringReader input = new StringReader("2 2 1 1 3 3 1 2 1 3 2 3 2 1 3 1 3 2");
-    TicTacToeController c = new TicTacToeConsoleController(input, stringWriter);
-    c.playGame(model);
   }
 
   @Test(expected = IllegalStateException.class)
