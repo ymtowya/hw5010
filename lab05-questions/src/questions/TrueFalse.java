@@ -1,5 +1,10 @@
 package questions;
 
+/**
+ * TrueFalse class extends from AbstractQuestion, represents category of
+ * Question asking single response of True / False only.
+ *
+ */
 public class TrueFalse extends AbstractQuestion {
   
   public TrueFalse(String question, String answer, String ...options) {

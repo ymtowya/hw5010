@@ -1,5 +1,10 @@
 package questions;
 
+/**
+ * MultipleSelect class extends from AbstractQuestion, represents category of
+ * Question asking users' multiple choice as response to the given options.
+ *
+ */
 public class MultipleSelect extends AbstractQuestion {
 
   public MultipleSelect(String question, String answer, String ...options) {

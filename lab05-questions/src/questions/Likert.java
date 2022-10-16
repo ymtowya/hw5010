@@ -1,11 +1,20 @@
 package questions;
 
+/**
+ * Likert class extends from AbstractQuestion, represents category of
+ * Question asking users' rating degree as response from 1 to 5.
+ *
+ */
 public class Likert extends AbstractQuestion {
   
   public Likert(String question) {
     super(question, "", new String[0]);
   }
   
+  /**
+   * For Likert, as long as the input falls under the range, it's valid.
+   *
+   */
   @Override
   protected boolean isValidInput(String string) {
     try {
