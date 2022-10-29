@@ -53,7 +53,7 @@ public interface PolynomialNode {
   boolean isSame(PolynomialNode node);
   
   /**
-   * Get coefficient of certain power
+   * Get coefficient of certain power.
    *
    * @param power power
    * @return coefficient

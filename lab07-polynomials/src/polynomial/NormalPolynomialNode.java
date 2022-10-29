@@ -1,7 +1,5 @@
 package polynomial;
 
-import java.util.Scanner;
-
 /**
  * Normal Node for polynomials. Has Power and Coefficient.
  *

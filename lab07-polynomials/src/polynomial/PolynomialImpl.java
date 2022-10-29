@@ -26,7 +26,8 @@ public class PolynomialImpl implements Polynomial {
   public PolynomialImpl(String s) {
     Scanner input = new Scanner(s);
     this.head = new EmptyPolynomialNode();
-    int p, e;
+    int p = 0;
+    int e = 0;
     while (input.hasNext()) {
       String curr = input.next();
       String [] currs = curr.split("x");
