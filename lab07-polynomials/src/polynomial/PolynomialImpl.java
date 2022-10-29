@@ -10,10 +10,19 @@ public class PolynomialImpl implements Polynomial {
 
   private PolynomialNode head;
   
+  /**
+   * Init the Polynomial with empty input.
+   *
+   */
   public PolynomialImpl() {
     head = new EmptyPolynomialNode();
   }
   
+  /**
+   * Init the Polynomial with String of content.
+   *
+   * @param s poly content
+   */
   public PolynomialImpl(String s) {
     Scanner input = new Scanner(s);
     this.head = new EmptyPolynomialNode();
@@ -63,11 +72,10 @@ public class PolynomialImpl implements Polynomial {
 
   @Override
   public boolean isSame(Polynomial poly) {
-    if (!(poly instanceof PolynomialImpl)) {
+    if (poly == null) {
       return false;
     }
-    PolynomialImpl polyImpl = (PolynomialImpl) poly;
-    return this.head.isSame(polyImpl.head);
+    return poly.toString().equals(this.toString());
   }
 
   @Override

@@ -1,7 +1,7 @@
 package polynomial;
 
 /**
- * Empty node for polynomials.
+ * Empty node in polynomials, positioned at the end of the polynomial.
  *
  */
 public class EmptyPolynomialNode implements PolynomialNode {

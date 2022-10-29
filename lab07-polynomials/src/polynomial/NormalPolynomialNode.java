@@ -3,7 +3,7 @@ package polynomial;
 import java.util.Scanner;
 
 /**
- * Normal Node for polynomials.
+ * Normal Node for polynomials. Has Power and Coefficient.
  *
  */
 public class NormalPolynomialNode implements PolynomialNode {
@@ -12,6 +12,13 @@ public class NormalPolynomialNode implements PolynomialNode {
   private int coeff;
   private PolynomialNode rest;
 
+  /**
+   * Init one term in the polynomial with params.
+   *
+   * @param p power
+   * @param e coefficient
+   * @param r rest
+   */
   public NormalPolynomialNode(int p, int e, PolynomialNode r) {
     setParams(p, e);
     this.rest = r;
@@ -36,6 +43,9 @@ public class NormalPolynomialNode implements PolynomialNode {
 
   @Override
   public PolynomialNode addTerm(int p, int e) {
+    if (e == 0) {
+      return this;
+    }
     if (p == this.power) {
       this.coeff += e;
       if (this.coeff == 0) {
@@ -68,8 +78,6 @@ public class NormalPolynomialNode implements PolynomialNode {
 
   @Override
   public boolean isSame(PolynomialNode node) {
-//    boolean curr = (this.power == node.getPower() && this.coeff == node.getCoeff());
-//    return curr && this.rest.isSame(node.getRest());
     return node.toString().equals(this.toString());
   }
 
