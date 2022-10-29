@@ -16,13 +16,20 @@ public class PolynomialTest {
   }
 
   @Test
-  public final void test() {
-//    String teString = "-34";
-//    String [] res = teString.split("x");
-//    System.out.println(res.length);
-////    System.out.println(res[1].substring(1));
-    System.out.println(poly.toString());
+  public final void testdegree() {
     assertEquals(5, poly.getDegree());
+  }
+  
+  @Test
+  public final void testeval() {
+    assertEquals(1, (int) poly.evaluate(1));
+  }
+  
+  @Test
+  public final void testadd() {
+    Polynomial poly2 = new PolynomialImpl("2x^5 +3x^1 -5");
+    Polynomial poly3 = poly2.add(poly);
+    assertEquals(1, (int) poly3.evaluate(1));
   }
 
 }

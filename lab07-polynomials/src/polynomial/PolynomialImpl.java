@@ -38,18 +38,24 @@ public class PolynomialImpl implements Polynomial {
     if (!(other instanceof PolynomialImpl)) {
       throw new IllegalArgumentException("type unmatched!");
     }
+    Polynomial res = new PolynomialImpl();
     PolynomialImpl otherImpl = (PolynomialImpl) other;
     PolynomialNode newNode = otherImpl.head;
     while (newNode != null) {
-      this.addTerm(newNode.getCoeff(), newNode.getPower());
+      res.addTerm(newNode.getCoeff(), newNode.getPower());
       newNode = newNode.getRest();
     }
-    return this;
+    newNode = this.head;
+    while (newNode != null) {
+      res.addTerm(newNode.getCoeff(), newNode.getPower());
+      newNode = newNode.getRest();
+    }
+    return res;
   }
 
   @Override
   public void addTerm(int coefficient, int power) throws IllegalArgumentException {
-    if (power < 0 || (power != 0 && coefficient == 0)) {
+    if (power < 0) {
       throw new IllegalArgumentException("invalid arguments!");
     }
     this.head = this.head.addTerm(power, coefficient);

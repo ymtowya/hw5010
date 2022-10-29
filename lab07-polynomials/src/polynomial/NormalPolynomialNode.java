@@ -17,25 +17,8 @@ public class NormalPolynomialNode implements PolynomialNode {
     this.rest = r;
   }
   
-  public NormalPolynomialNode(Scanner in) {
-    String curr = in.next();
-    String [] currs = curr.split("x");
-    if (currs.length < 2) {
-      this.power = 0;
-      this.coeff = Integer.parseInt(curr);
-    } else {
-      this.coeff = Integer.parseInt(currs[0].trim());
-      this.power = Integer.parseInt(currs[1].substring(1));
-    }
-    if (in.hasNext()) {
-      this.rest = new NormalPolynomialNode(in);
-    } else {
-      this.rest = new EmptyPolynomialNode();
-    }
-  }
-  
   private void setParams(int newPower, int newCoeff) {
-    if (newPower < 0 || (newPower > 0 && newCoeff == 0)) {
+    if (newPower < 0) {
       throw new IllegalArgumentException("invalid parameters!");
     }
     this.power = newPower;
@@ -45,6 +28,9 @@ public class NormalPolynomialNode implements PolynomialNode {
   @Override
   public double getValue(double x) {
     double curr = this.coeff * Math.pow(x, this.power);
+    if (this.power == 0) {
+      curr = this.coeff;
+    }
     return curr + this.rest.getValue(x);
   }
 
@@ -82,8 +68,9 @@ public class NormalPolynomialNode implements PolynomialNode {
 
   @Override
   public boolean isSame(PolynomialNode node) {
-    boolean curr = (this.power == node.getPower() && this.coeff == node.getCoeff());
-    return curr && this.rest.isSame(node.getRest());
+//    boolean curr = (this.power == node.getPower() && this.coeff == node.getCoeff());
+//    return curr && this.rest.isSame(node.getRest());
+    return node.toString().equals(this.toString());
   }
 
   @Override
