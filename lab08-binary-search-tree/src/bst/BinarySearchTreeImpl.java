@@ -1,9 +1,19 @@
 package bst;
 
+
+/**
+ * Implementation of Binary Search Tree.
+ *
+ * @param <T> Comparable Type T
+ */
 public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinarySearchTree<T> {
 
   private TreeNode<T> root;
   
+  /**
+   * Init the Tree.
+   *
+   */
   public BinarySearchTreeImpl() {
     this.root = new EmptyTreeNode<>();
   }

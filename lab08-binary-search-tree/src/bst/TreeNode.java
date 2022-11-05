@@ -1,7 +1,10 @@
 package bst;
 
-import java.util.List;
-
+/**
+ * Interface of tree Node.
+ *
+ * @param <T> Comaprable Type T
+ */
 public interface TreeNode<T extends Comparable<T>> {
   
   
@@ -10,6 +13,7 @@ public interface TreeNode<T extends Comparable<T>> {
    * already present
    * 
    * @param data the data to be added
+   * @return TreeNode the node of new root
    */
   TreeNode<T> add(T data);
 

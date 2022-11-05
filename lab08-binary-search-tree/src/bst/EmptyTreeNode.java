@@ -1,8 +1,10 @@
 package bst;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * Empty Node for Bianry Search tree.
+ *
+ * @param <T> Type T
+ */
 public class EmptyTreeNode<T extends Comparable<T>> implements TreeNode<T> {
 
   @Override

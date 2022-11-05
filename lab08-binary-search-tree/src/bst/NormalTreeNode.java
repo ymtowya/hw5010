@@ -1,14 +1,21 @@
 package bst;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * Normal Tree Node For Binary Search Tree.
+ *
+ * @param <T> Comparable type T
+ */
 public class NormalTreeNode<T extends Comparable<T>> implements TreeNode<T> {
   
   private T myData;
   private TreeNode<T> leftChild;
   private TreeNode<T> rightChild;
   
+  /**
+   * Init the Tree Node.
+   *
+   * @param theData data
+   */
   public NormalTreeNode(T theData) {
     this.myData = theData;
     this.leftChild = new EmptyTreeNode<>();
