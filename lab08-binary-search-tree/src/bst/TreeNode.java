@@ -55,7 +55,7 @@ public interface TreeNode<T extends Comparable<T>> {
    * 
    * @return a string containing the preorder traveral
    */
-  List<String> preOrder();
+  String preOrder();
 
   /**
    * Returns a string that present all the data in the tree in pre-order. sorted
@@ -63,7 +63,7 @@ public interface TreeNode<T extends Comparable<T>> {
    * 
    * @return a string containing the inorder traversal
    */
-  List<String> inOrder();
+  String inOrder();
 
   /**
    * Returns a string that present all the data in the tree, sorted in ascending
@@ -71,6 +71,6 @@ public interface TreeNode<T extends Comparable<T>> {
    * 
    * @return a string containing the postorder traversal
    */
-  List<String> postOrder();
+  String postOrder();
 
 }

@@ -64,64 +64,41 @@ public class NormalTreeNode<T extends Comparable<T>> implements TreeNode<T> {
   }
 
   @Override
-  public List<String> preOrder() {
+  public String preOrder() {
+   
+    StringBuilder sb = new StringBuilder();
     
-    List<String> resList = new ArrayList<>();
-    resList.add(this.myData.toString());
-    resList.addAll(this.leftChild.preOrder());
-    resList.addAll(this.rightChild.preOrder());
+    sb.append(this.myData.toString());
+    sb.append(" ");
+    sb.append(this.leftChild.preOrder());
+    sb.append(this.rightChild.preOrder());
     
-    return resList;
-//    StringBuilder sb = new StringBuilder();
-//    
-//    sb.append(this.myData.toString());
-//    sb.append(" ");
-//    sb.append(this.leftChild.preOrder());
-//    sb.append(this.rightChild.preOrder());
-//    
-//    return sb.toString();
+    return sb.toString();
   }
 
   @Override
-  public List<String> inOrder() {
+  public String inOrder() {
     
-    List<String> resList = new ArrayList<>();
-    resList.addAll(this.leftChild.inOrder());
-    resList.add(this.myData.toString());
-    resList.addAll(this.rightChild.inOrder());
+    StringBuilder sb = new StringBuilder();
     
-    return resList;
+    sb.append(this.leftChild.inOrder());
+    sb.append(this.myData.toString());
+    sb.append(" ");
+    sb.append(this.rightChild.inOrder());
     
-//    StringBuilder sb = new StringBuilder();
-//    
-//    sb.append(this.leftChild.inOrder());
-//    sb.append(this.myData.toString());
-//    sb.append(" ");
-//    sb.append(this.rightChild.inOrder());
-//    
-//    return sb.toString();
+    return sb.toString();
   }
 
   @Override
-  public List<String> postOrder() {
+  public String postOrder() {
+    StringBuilder sb = new StringBuilder();
     
-    List<String> resList = new ArrayList<>();
-    resList.addAll(this.leftChild.postOrder());
-    resList.addAll(this.rightChild.postOrder());
-    resList.add(this.myData.toString());
+    sb.append(this.leftChild.postOrder());
+    sb.append(this.rightChild.postOrder());
+    sb.append(this.myData.toString());
+    sb.append(" ");
     
-    return resList;
-    
-//    StringBuilder sb = new StringBuilder();
-//    
-//    sb.append(this.leftChild.postOrder());
-//    sb.append(this.rightChild.postOrder());
-//    sb.append(this.myData.toString());
-//    sb.append(" ");
-//    
-//    List<T> myList = new ArrayList<>();
-//    
-//    return sb.toString();
+    return sb.toString();
   }
 
 }

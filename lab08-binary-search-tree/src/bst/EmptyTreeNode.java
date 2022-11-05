@@ -36,18 +36,18 @@ public class EmptyTreeNode<T extends Comparable<T>> implements TreeNode<T> {
   }
 
   @Override
-  public List<String> preOrder() {
-    return new ArrayList<>();
+  public String preOrder() {
+    return "";
   }
 
   @Override
-  public List<String> inOrder() {
-    return new ArrayList<>();
+  public String inOrder() {
+    return "";
   }
 
   @Override
-  public List<String> postOrder() {
-    return new ArrayList<>();
+  public String postOrder() {
+    return "";
   }
 
 }

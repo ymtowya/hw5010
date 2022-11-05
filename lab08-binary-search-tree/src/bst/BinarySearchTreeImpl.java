@@ -63,7 +63,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinarySear
     }
     StringBuilder sb = new StringBuilder();
     sb.append("[");
-    sb.append(String.join(" ", root.preOrder()));
+    sb.append(root.preOrder().strip().trim());
     sb.append("]");
     return  sb.toString();
   }
@@ -75,7 +75,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinarySear
     }
     StringBuilder sb = new StringBuilder();
     sb.append("[");
-    sb.append(String.join(" ", root.inOrder()));
+    sb.append(root.inOrder().strip().trim());
     sb.append("]");
     return  sb.toString();
   }
@@ -87,14 +87,14 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinarySear
     }
     StringBuilder sb = new StringBuilder();
     sb.append("[");
-    sb.append(String.join(" ", root.postOrder()));
+    sb.append(root.postOrder().strip().trim());
     sb.append("]");
     return  sb.toString();
   }
   
   @Override
   public String toString() {
-    return this.preOrder();
+    return this.inOrder();
   }
 
 }
